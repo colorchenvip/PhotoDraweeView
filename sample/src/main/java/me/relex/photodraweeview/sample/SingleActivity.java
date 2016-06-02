@@ -9,10 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.controller.BaseControllerListener;
 import com.facebook.imagepipeline.image.ImageInfo;
+
 import me.relex.photodraweeview.OnPhotoTapListener;
 import me.relex.photodraweeview.OnViewTapListener;
 import me.relex.photodraweeview.PhotoDraweeView;
@@ -29,7 +31,10 @@ public class SingleActivity extends AppCompatActivity {
 
         mPhotoDraweeView = (PhotoDraweeView) findViewById(R.id.photo_drawee_view);
         PipelineDraweeControllerBuilder controller = Fresco.newDraweeControllerBuilder();
-        controller.setUri(Uri.parse("res:///" + R.drawable.panda));
+        Uri uri = Uri.parse("res:///" + R.drawable.panda);
+//        Uri uri = Uri.parse("http://imgsrc.baidu.com/baike/pic/item/18d8bc3eb13533faa39c2867a8d3fd1f41345b54.jpg");
+        controller.setUri(uri);
+//        controller.setAutoPlayAnimations(true);
         controller.setOldController(mPhotoDraweeView.getController());
         // You need setControllerListener
         controller.setControllerListener(new BaseControllerListener<ImageInfo>() {
